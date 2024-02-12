@@ -27,7 +27,7 @@
       tags:
         - docker
 
-    - role: docker_network
+    - role: docker
       tags:
         - docker
 
@@ -49,18 +49,13 @@
       tags:
         - authelia
 
-    - role: bunkerweb
+    - role: web
       tags:
-        - bunkerweb
+        - web
 
     - role: wireguard
       tags:
         - wireguard
-
-    - role: chriswayg.msmtp-mailer
-      when: email_password is defined
-      tags:
-        - msmtp
 
     - role: ssh
       tags:

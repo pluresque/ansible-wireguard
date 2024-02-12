@@ -1,10 +1,24 @@
 ---
+
+- name: Restart wireguard
+  ansible.builtin.service:
+    name: "wg-quick@{{ wireguard_interface }}"
+    state: "{{ item }}"
+  loop:
+    - stopped
+    - started
+  when:
+    - wireguard__restart_interface
+    - not ansible_os_family == 'Darwin'
+    - wireguard_service_enabled == "yes"
+  listen: "reconfigure wireguard"
+
 - name: Restart authelia
   community.general.docker_container:
     name: authelia
     restart: yes
 
-- name: Restart bunkerweb
+- name: Restart web
   community.general.docker_container:
-    name: bunkerweb
+    name: web
     restart: yes

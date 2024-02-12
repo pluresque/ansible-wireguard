@@ -4,16 +4,11 @@ all:
       ansible_connection: local
 
   vars:
-    username: notthebee
-
+    username: pluresque
     root_host: example.duckdns.org
-
     enable_username_creation: yes
-
     user_shell: /bin/bash
-
     enable_passwordless_sudo: yes
-
     # Whether or not you want to generate a public key pair for SSH auth
     # The playbook will not generate a new pair if $HOME/.ssh/authorized_keys exists and isn't empty
     enable_ssh_keygen: yes
@@ -23,15 +18,10 @@ all:
     # ssh_public_key: ""
 
     authelia_host: "auth.{{ root_host }}"
-
     wireguard_host: "wg.{{ root_host }}"
-
     wireguard_subnet: "10.8.0.x"
-
     wireguard_client_allowed_ips: "0.0.0.0/0, ::/0"
-
     adguard_host: "adguard.{{ root_host }}"
-
     wireguard_port: "51820"
 
     # Possible choices: cloudflare, quad9, google
@@ -49,37 +39,10 @@ all:
 
     # Set the time at which the system should reboot after installing updates (24H format)
     autoupdate_reboot_time: 03:00
-
     docker_dir: "/opt/docker"
 
     # You can set it to a different port in order to avoid automated scanner bots
     ssh_port: 22
-
-    # Optional e-mail for notifications (unattended upgrades, banned IPs, etc.)
-    # Leave everything in place if you don't want any notifications
-    email_login: root@localhost
-
-    email: "{{ email_login }}"
-
-    email_recipient: "{{ email_login }}"
-
-    email_smtp_host: smtp.localhost.com
-
-    email_smtp_port: 465
-
-    # MSMTP
-    msmtp_accounts:
-      - account: mailbox
-        host: "{{ email_smtp_host }}"
-        port: "{{ email_smtp_port }}"
-        auth: "on"
-        from: "{{ email }}"
-        user: "{{ email_login }}"
-        password: "{{ email_password }}"
-
-    msmtp_default_account: "mailbox"
-
-    msmtp_alias_default: "{{ email }}"
 
     ssh_allow_cidr: 0.0.0.0/0
 
