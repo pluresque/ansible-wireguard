@@ -18,8 +18,11 @@ $ bash bootstrap.sh
 * Rewritten bootstrap.sh script
 * Wireguard WebUI (via wg-easy)
 * Two-factor authentication for the WebUI (Authelia)
-* Hardened web server (Bunkerweb)
 * Encrypted DNS resolution with optional ad-blocking functionality (Adguard Home, DNSCrypt and Unbound)
 * IPTables firewall with sane defaults and Fail2Ban
 * Automated and unattended upgrades
 * SSH hardening and public key pair generation (optional, you can also use your own keys)
+
+## Credits
+Code and ideas in this project are inspired by the following projects:
+* [ansible-role-wireguard](https://github.com/githubixx/ansible-role-wireguard/tree/master)
