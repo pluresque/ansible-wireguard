@@ -6,3 +6,4 @@ passlib
 bcrypt 
 wheel
 ansible>=4.10
+requests
