@@ -69,3 +69,24 @@
 - name: Notify user about changes
   when: (ssh_config.changed or ssh_authorized_keys.changed)
   ansible.builtin.import_tasks: notify_user.yml
+
+- name: Install fail2ban
+  ansible.builtin.package:
+    name: fail2ban
+    state: present
+
+- name: Install the jail.local file
+  ansible.builtin.template:
+    src: "jail.local.j2"
+    dest: "/etc/fail2ban/jail.local"
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - Restart fail2ban
+
+- name: Make sure the fail2ban systemd service is enabled and started
+  ansible.builtin.service:
+    name: fail2ban
+    state: started
+    enabled: yes

@@ -4,7 +4,7 @@ all:
       ansible_connection: local
 
   vars:
-    username: pluresque
+    username: username
     root_host: example.duckdns.org
     enable_username_creation: yes
     user_shell: /bin/bash
